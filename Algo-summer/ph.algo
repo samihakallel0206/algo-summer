@@ -1,0 +1,74 @@
+
+// Description: Lit une phrase terminée par un point et détermine :
+//                - La longueur de la phrase (nombre de caractères)
+//                - Le nombre de mots (séparés par un seul espace)
+//                - Le nombre de voyelles
+//              Version utilisant une boucle For pour traiter
+//              chaque caractère individuellement.
+
+ALGORITHM AnalysePhrase
+
+// Déclarations des variables
+VAR
+    phrase      : STRING       // La phrase saisie (sans le point)
+    caractere   : CHAR       // Le caractère courant dans la boucle
+    longueur    : INTEGER      // Compteur du nombre total de caractères
+    nb_mots     : INTEGER      // Compteur du nombre de mots
+    nb_voyelles : INTEGER      // Compteur du nombre de voyelles
+    i           : INTEGER      // Indice de la boucle For
+
+BEGIN
+
+    // Initialisation des trois compteurs
+    longueur    := 0
+    nb_mots     := 0
+    nb_voyelles := 0
+    phrase      := ""
+
+    // Input:Lecture de la phrase (sans le point)
+    Write("Entrez une phrase terminée par un point :")
+    Read(phrase)
+     //la phrase "Hello There."
+                
+    // La longueur totale inclut le point final, length prédéfini en algo
+    longueur := Length(phrase) + 1
+
+    // Boucle For : traitement caractère par caractère
+    // Chaque caractère est traité individuellement
+    For i := 0 TO Length(phrase)-1 DO
+       
+        caractere := phrase[i]
+
+        // Vérification si le caractère est une voyelle
+        // On compare avec les voyelles minuscules et majuscules
+        IF (caractere = 'a' OR caractere = 'A'
+            OR caractere = 'e' OR caractere = 'E'
+            OR caractere = 'i' OR caractere = 'I'
+            OR caractere = 'o' OR caractere = 'O'
+            OR caractere = 'u' OR caractere = 'U'
+          ) THEN
+          //condition est vérifiée
+
+            nb_voyelles := nb_voyelles + 1
+
+        ENDIF
+
+        // Vérification si le caractère est un espace
+        // Chaque espace sépare deux mots
+        IF caractere = ' ' THEN
+            nb_mots := nb_mots + 1
+        ENDIF
+
+    ENDFOR //fin de boucle
+
+    // Le nombre de mots est égal au nombre d'espaces + 1
+    // (car les mots sont séparés par un seul espace)
+    nb_mots := nb_mots + 1
+
+    // OUTPUT:  Affichage des résultats
+  
+    Write("Longueur de la phrase        : ", longueur, " caractère(s)")
+    Write("Nombre de mots               : ", nb_mots, " mot(s)")
+    Write("Nombre de voyelles           : ", nb_voyelles, " voyelle(s)")
+
+END

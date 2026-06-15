@@ -1,0 +1,10 @@
+ALGORITHM algorithm_name
+VAR
+    set_declarations
+BEGIN
+    
+    if condition THEN
+        // code to execute if condition is true
+    ELSE
+        // code to execute if condition is false
+END
